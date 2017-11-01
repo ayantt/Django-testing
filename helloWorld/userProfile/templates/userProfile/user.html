@@ -1,38 +1,16 @@
-<html>
-<head>
-    <title>Users</title>
-</head>
-<body>
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'userProfile/style.css' %}">
+{% extends 'userProfile/base.html' %}
+{% block title %}Users{% endblock %}
 
-
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'userProfile:user' %}">YOOO!!!!</a>
-
-        </div>
-
-    </div>
-
-</nav>
-
-<a href="addUser.html">Add new user</a>
-
-<h3>List of all existing users</h3>
-{% if all_user %}
-    <ul>
-
-        {% for user in all_user %}
-        <li><a href="{% url 'userProfile:details' user.id %}">{{ user.name}} - {{ user.location }}</a></li>
-        {% endfor %}
-
-    </ul>
-{% else %}
-    <h6>This user don't exist</h6>
-{% endif %}
-<!--<a href="{#% url 'userProfile:'  %#}"> <--Back</a>-->
-</body>
-</html>
+{% block body %}
+    <h3>List of all existing users</h3>
+    <!--User list-->
+    {% if all_user %}
+        <ol>
+            {% for user in all_user %}
+            <li><a href="{% url 'userProfile:details' user.id %}">{{ user.name}} - {{ user.location }}</a></li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h6>This user don't exist</h6>
+    {% endif %}
+{% endblock %}

@@ -15,6 +15,7 @@ class User(models.Model):
     gender = models.CharField(max_length=1)
     age = models.CharField(max_length=2)
     image = models.CharField(max_length=1000)
+    password = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name

@@ -1,18 +1,16 @@
-<html>
-<head>
-    <title>Information</title>
-</head>
-<body>
-<img src="{{ user.image }}", width="100", height="100">
-<h1>Information of {{ user.name }}</h1><br/>
-<ul>
-    <li>Name:   <i>{{ user.name}}</i></li>
-    <li>Age:    {{ user.age}}</li>
-    <li>Gender: {{ user.gender}}</li>
-    <li>City:   {{ user.location.city}}</li>
-    <li>Country: {{ user.location.country}}</li>
+{% extends 'userProfile/base.html' %}
+{% block title %}Information{% endblock %}
 
-</ul>
-<a href="{% url 'userProfile:user'  %}"> <--Back</a>
-</body>
-</html>
+{% block body %}
+    <img src="{{ user.image }}", width="100", height="100">
+    <h1>Information of {{ user.name }}</h1><br/>
+    <ul>
+        <li>Name:   <i>{{ user.name}}</i></li>
+        <li>Age:    {{ user.age}}</li>
+        <li>Gender: {{ user.gender}}</li>
+        <li>City:   {{ user.location.city}}</li>
+        <li>Country: {{ user.location.country}}</li>
+
+    </ul>
+    <a href="{% url 'userProfile:user'  %}"> <--Back</a>
+{% endblock %}

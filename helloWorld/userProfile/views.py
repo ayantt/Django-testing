@@ -1,3 +1,4 @@
+from django.views import generic
 from django.shortcuts import render, get_object_or_404
 from .models import User, Location
 
@@ -25,3 +26,12 @@ def addUser(request):
 def hello(request):
     context = {}
     return render(request, 'userProfile/home.html', context)
+
+
+class UserView(generic.ListView):
+    template_name = 'userProfile/user.html'
+    def get_queryset(self):
+        return User.objects.all()
+
+
+
